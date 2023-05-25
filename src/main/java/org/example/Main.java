@@ -7,16 +7,19 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
-        String s = sc.nextLine();
-        StringBuilder sb = new StringBuilder();//문자열 1개이상 있을 때 사용
+        int N = sc.nextInt();
+        int original = N;
+        int count = 0;
 
-        for (char c : s.toCharArray()) {
-            if (Character.isUpperCase(c)) {
-                sb.append(Character.toLowerCase(c));
-            } else {
-                sb.append(Character.toUpperCase(c));
-            }
-        }
-        System.out.println(sb.toString());
+        do {
+            int a = N / 10;
+            int b = N % 10;
+            int sum = a + b;
+            N = (b * 10) + (sum % 10);
+            count++;
+        } while (N != original);
+
+        System.out.println(count);
     }
+
 }
