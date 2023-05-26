@@ -7,19 +7,28 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int original = N;
-        int count = 0;
 
-        do {
-            int a = N / 10;
-            int b = N % 10;
-            int sum = a + b;
-            N = (b * 10) + (sum % 10);
-            count++;
-        } while (N != original);
 
-        System.out.println(count);
+        long T = sc.nextInt();
+
+        for (int i = 0; i < T; i++) {
+            int student = sc.nextInt();
+            int[] gradeList = new int[student];
+            int sum = 0;
+            for (int j = 0; j < student; j++) {
+                gradeList[j] = sc.nextInt();
+                sum += gradeList[j];
+            }
+            float avg = sum / student;
+            int count = 0;
+            for (int k = 0; k < student; k++) {
+                if (gradeList[k] > avg) {
+                    count++;
+                }
+            }
+            System.out.printf("%.3f%%\n", 100.0 * count / student);
+
+        }
     }
 
 }
