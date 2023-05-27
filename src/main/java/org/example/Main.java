@@ -1,9 +1,7 @@
 package org.example;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,21 +9,16 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        long N = sc.nextInt();
-        long sum = 0;
-        List<Long> list = new ArrayList<>();
+        String a = sc.nextLine().toLowerCase();
+        char b = sc.next().toLowerCase().charAt(0);
+        int count =0;
 
-        for (int i = 0; i < N; i++) {
-            long a = sc.nextInt();
-            list.add(a);
-            sum += a;
+        for (char x : a.toCharArray()) { //문자하나하나 분리해서 문자배열 생성
+            if (x == b) {
+                ++count;
+            }
         }
+        System.out.println(count);
 
-
-        if (sum % 2 != 0) {
-            Optional<Long> min = list.stream().filter(a -> a % 2 != 0).min(Long::compareTo);
-            sum -= min.get();
-        }
-        System.out.println(sum);
     }
 }
