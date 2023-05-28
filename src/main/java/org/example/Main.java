@@ -9,16 +9,18 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        String a = sc.nextLine().toLowerCase();
-        char b = sc.next().toLowerCase().charAt(0);
-        int count =0;
+        String str = sc.nextLine();
+        char[] array = str.toCharArray();
 
-        for (char x : a.toCharArray()) { //문자하나하나 분리해서 문자배열 생성
-            if (x == b) {
-                ++count;
+        for (int i = 0; i < str.length(); i++) {
+            char cr = array[i];
+            if (Character.isUpperCase(cr)) {
+                array[i] = Character.toLowerCase(cr);
+            } else {
+                array[i] = Character.toUpperCase(cr);
             }
         }
-        System.out.println(count);
-
+        str = new String(array);
+        System.out.println(str);
     }
 }
