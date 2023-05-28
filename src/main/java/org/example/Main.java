@@ -8,17 +8,16 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+        String[] words = str.split(" "); //split사용하여 공백으로 단어 분할
+        String longWord = "";
 
-        String a = sc.nextLine().toLowerCase();
-        char b = sc.next().toLowerCase().charAt(0);
-        int count =0;
-
-        for (char x : a.toCharArray()) { //문자하나하나 분리해서 문자배열 생성
-            if (x == b) {
-                ++count;
+        for (String word : words) {
+            if (word.length() > longWord.length()) {
+                longWord = word;
             }
         }
-        System.out.println(count);
+        System.out.println(longWord);
+        }
 
     }
-}
