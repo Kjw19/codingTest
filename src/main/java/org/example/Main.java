@@ -8,26 +8,13 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String strs = sc.nextLine();
         char[] chars = strs.toCharArray();
-        int i =0;
-        int k = chars.length -1;
+        StringBuilder sb = new StringBuilder();
 
-        while (i < k) {
-            if (Character.isLetter(chars[i])) {//알파벳인지 확인
-                while (i<k &&!Character.isLetter(chars[k])) { //알파벳인지 확인
-                    k--;
-                }
-                if (i < k) {
-
-                    char tmp = chars[i];
-                    chars[i] = chars[k];
-                    chars[k] = tmp;
-                    k--;
-                }
+        for (char ch:chars) {
+            if (sb.indexOf(String.valueOf(ch)) == -1) {
+                sb.append(ch);
             }
-            i++;
         }
-
-        String toString = new String(chars);
-        System.out.println(toString);
+        System.out.println(sb.toString());
     }
 }
