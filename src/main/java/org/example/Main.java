@@ -4,17 +4,21 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         Scanner sc = new Scanner(System.in);
-        String strs = sc.nextLine();
-        char[] chars = strs.toCharArray();
+
+        String a = sc.nextLine().toLowerCase();
+        char[] chars = a.toCharArray();
         StringBuilder sb = new StringBuilder();
 
-        for (char ch:chars) {
-            if (sb.indexOf(String.valueOf(ch)) == -1) {
-                sb.append(ch);
-            }
+        for (char ch : chars) {
+            sb.append(ch);
         }
-        System.out.println(sb.toString());
+        sb.reverse();
+        String b = sb.toString();
+        if (a.equals(b)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
     }
 }
