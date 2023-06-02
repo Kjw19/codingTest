@@ -7,15 +7,16 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         String a = sc.nextLine().toLowerCase();
-        char[] chars = a.toCharArray();
         StringBuilder sb = new StringBuilder();
 
-        for (char ch : chars) {
-            sb.append(ch);
+        for (int i = 0; i < a.length(); i++) {
+            if (Character.isLetter(a.charAt(i))) {
+                sb.append(a.charAt(i));
+            }
         }
-        sb.reverse();
         String b = sb.toString();
-        if (a.equals(b)) {
+        String c = sb.reverse().toString();
+        if (c.equals(b)) {
             System.out.println("YES");
         } else {
             System.out.println("NO");
