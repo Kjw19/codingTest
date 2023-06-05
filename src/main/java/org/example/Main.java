@@ -6,33 +6,28 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String a = sc.next();
-        char b = sc.next().charAt(0);
-        int[] s = new int[a.length()];
-        int c = 200;
-
-
-        for (int i = 0; i < a.length(); i++) {
-            if (a.charAt(i) == b) {
-                c = 0;
-            }else {
-                c++;
-            }
-            s[i] = c;
-        }
-
-        c=200;
-        for (int j = a.length() -1; j >=0; j--) {
-            if (a.charAt(j) == b) {
-                c = 0;
+        String a = sc.nextLine();
+        int count =1;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i < a.length(); i++) {
+            if (a.charAt(i - 1) == a.charAt(i)) {
+                count++;
             } else {
-                c++;
+                sb.append(a.charAt(i - 1));
+                if (count != 1) {
+                    sb.append(count);
+                }
+                count=1;
             }
-            s[j] = Math.min(s[j], c);
+        }
+        sb.append(a.charAt(a.length() - 1));
+        if (count != 1) {
+            sb.append(count);
         }
 
-        for (int k = 0; k < s.length; k++) {
-            System.out.print(s[k] + " ");
-        }
+        String b = sb.toString();
+        System.out.println(b);
+
+
     }
 }
