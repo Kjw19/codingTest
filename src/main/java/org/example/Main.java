@@ -7,18 +7,25 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int count = sc.nextInt();
-        sc.nextLine();
-        String a = sc.nextLine();
+        int N = sc.nextInt();
+        int[] list = new int[N];
+        List<Integer> list2 = new ArrayList<>();
 
-        for (int i = 0; i < count; i++) {
-            String b = a.substring(i * 7, (i + 1) * 7)
-                    .replaceAll("#", "1")
-                    .replaceAll("\\*", "0");
 
-            int asc = Integer.parseInt(b, 2);
-            System.out.println((char) asc);
+        for (int i = 0; i < N; i++) {
+            int a = sc.nextInt();
+            list[i] = a;
+        }
+        list2.add(list[0]);
+        for (int j = 1; j < list.length; j++) {
+            if (list[j - 1] < list[j]) {
+                list2.add(list[j]);
+            }
+        }
+        for (Integer integer : list2) {
+            System.out.print(integer + " ");
+        }
         }
 
     }
-}
+
