@@ -8,36 +8,18 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        int[] A = new int[N];
-        int[] B = new int[N];
-        int sis = 1;
-        int rock = 2;
-        int paper = 3;
+        int[] array = new int[N];
 
-        for (int i = 0; i < N; i++) {
-            A[i] = sc.nextInt();
-        }
-        for (int i = 0; i < N; i++) {
-            B[i] = sc.nextInt();
-        }
-        for (int i = 0; i < N; i++) {
-            if (A[i] == B[i]) {
-                System.out.println("D");
-            } else if (A[i] == sis && B[i] == rock) {
-                System.out.println("B");
-            } else if (A[i] == sis && B[i] == paper) {
-                System.out.println("A");
-            } else if (A[i] == rock && B[i] == sis) {
-                System.out.println("A");
-            } else if (A[i] == rock && B[i] == paper) {
-                System.out.println("B");
-            } else if (A[i] == paper && B[i] == sis) {
-                System.out.println("B");
-            } else if (A[i] == paper && B[i] == rock) {
-                System.out.println("A");
-            }
-        }
+        array[0] = 1;
+        array[1] = 1;
+        System.out.print(array[0] + " " + array[1] + " ");
+
+        for (int i = 2; i < array.length; i++) {
+            array[i] = array[i - 2] + array[i - 1];
+            System.out.print(array[i] + " ");
         }
 
-        }
+    }
+
+}
 
