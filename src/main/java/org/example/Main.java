@@ -1,25 +1,26 @@
 package org.example;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
 
-
         Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int[] array = new int[N];
 
-        array[0] = 1;
-        array[1] = 1;
-        System.out.print(array[0] + " " + array[1] + " ");
+        int n = sc.nextInt();
+        int answer = 0;
 
-        for (int i = 2; i < array.length; i++) {
-            array[i] = array[i - 2] + array[i - 1];
-            System.out.print(array[i] + " ");
+        int ch[] = new int[n + 1];
+
+        for (int i = 2; i <= n; i++) {
+            if (ch[i] == 0) {
+                answer++;
+                for (int j = i; j <= n; j=j+i) {
+                    ch[j] = 1;
+                }
+            }
+        }
+        System.out.println(answer);
         }
 
     }
-
-}
-
