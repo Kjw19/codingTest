@@ -8,19 +8,34 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int n = sc.nextInt();
-        int answer = 0;
 
-        int ch[] = new int[n + 1];
+        for (int i = 0; i < n; i++) {
+            int a = sc.nextInt();
+            int reverseA = getReverseA(a);
 
-        for (int i = 2; i <= n; i++) {
-            if (ch[i] == 0) {
-                answer++;
-                for (int j = i; j <= n; j=j+i) {
-                    ch[j] = 1;
-                }
+            if (searchPrime(reverseA)) {
+                System.out.print(reverseA + " ");
             }
         }
-        System.out.println(answer);
-        }
-
     }
+
+    private static int getReverseA(int a) {
+        StringBuilder str = new StringBuilder(Integer.toString(a));
+        String reverseStr = str.reverse().toString();
+        int reverseA = Integer.parseInt(reverseStr);
+        return reverseA;
+    }
+
+    private static boolean searchPrime(int reverseA) {
+        if (reverseA < 2) {
+            return false;
+        }
+        for (int j = 2; j * j <= reverseA; j++) {
+            if (reverseA % j == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+}
