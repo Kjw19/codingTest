@@ -6,36 +6,31 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
+        int score = 0;
+        int total =0;
 
         int n = sc.nextInt();
+        List<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < n; i++) {
-            int a = sc.nextInt();
-            int reverseA = getReverseA(a);
-
-            if (searchPrime(reverseA)) {
-                System.out.print(reverseA + " ");
-            }
+            list.add(sc.nextInt());
         }
+
+        total = createTotal(score, total, list);
+        System.out.println(total);
     }
 
-    private static int getReverseA(int a) {
-        StringBuilder str = new StringBuilder(Integer.toString(a));
-        String reverseStr = str.reverse().toString();
-        int reverseA = Integer.parseInt(reverseStr);
-        return reverseA;
+    private static int createTotal(int score, int total, List<Integer> list) {
+        for (Integer integer : list) {
+            if (integer == 1) {
+                score++;
+                total += score;
+            } else {
+                score = 0;
+            };
+        }
+        return total;
     }
 
-    private static boolean searchPrime(int reverseA) {
-        if (reverseA < 2) {
-            return false;
-        }
-        for (int j = 2; j * j <= reverseA; j++) {
-            if (reverseA % j == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
 
 }
