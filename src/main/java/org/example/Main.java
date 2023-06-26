@@ -6,31 +6,27 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int score = 0;
-        int total =0;
 
         int n = sc.nextInt();
         List<Integer> list = new ArrayList<>();
+        int count =1;
 
         for (int i = 0; i < n; i++) {
             list.add(sc.nextInt());
         }
-
-        total = createTotal(score, total, list);
-        System.out.println(total);
+        searchRank(list, count);
     }
 
-    private static int createTotal(int score, int total, List<Integer> list) {
+    private static void searchRank(List<Integer> list, int count) {
         for (Integer integer : list) {
-            if (integer == 1) {
-                score++;
-                total += score;
-            } else {
-                score = 0;
-            };
+            for (int i = 0; i < list.size(); i++) {
+                if (integer < list.get(i)) {
+                    count++;
+                }
+            }
+            System.out.print(count + " ");
+            count = 1;
         }
-        return total;
     }
-
 
 }
