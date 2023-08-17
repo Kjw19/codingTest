@@ -4,63 +4,30 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        String[] IntList = {"0","1","2","3","4","5","6","7","8","9"};
+        String[] StringList = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
         Scanner sc = new Scanner(System.in);
 
-        int n = sc.nextInt();
-        int[][] list = new int[n][n];
-        List<Integer> max = new ArrayList<>();
+        String s = sc.next();
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                list[i][j] += sc.nextInt();
-            }
-        }
-
-        searchMax(n, list, max);
     }
 
-    private static void searchMax(int n, int[][] list, List<Integer> max) {
-        columnSum(n, list, max);
-        rowSum(n, list, max);
-        diagonal(n, list, max);
-        reverseDiagonal(n, list, max);
+    public class Solution {
+        String[] IntList = {"0","1","2","3","4","5","6","7","8","9"};
+        String[] StringList = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
-        Optional<Integer> optionalMax = max.stream().max(Integer::compareTo);
-        Integer maxValue = optionalMax.get();
-        System.out.println(maxValue);
-    }
+        public int solution(String s) {
+            int answer =  0;
+            for (String s1 : StringList) {
+                int index = Arrays.asList(StringList).indexOf(s1);
+                if (s.contains(s1)) {
+                    s = s.replace(s1, IntList[index]);
+                }
+            }
+            answer = Integer.parseInt(s);
+            return answer;
 
-    private static void columnSum(int n, int[][] list, List<Integer> max) {
-        for (int i = 0; i < n; i++) {
-            int total = 0;
-            for (int j = 0; j < n; j++) {
-                total += list[i][j];
-            }
-            max.add(total);
         }
     }
-    private static void rowSum(int n, int[][] list, List<Integer> max) {
-        for (int i = 0; i < n; i++) {
-            int total = 0;
-            for (int j = 0; j < n; j++) {
-                total += list[j][i];
-            }
-            max.add(total);
-        }
-    }
-    private static void diagonal(int n, int[][] list, List<Integer> max) {
-            int total = 0;
-            for (int j = 0; j < n; j++) {
-                total += list[j][j];
-            }
-            max.add(total);
-        }
-    private static void reverseDiagonal(int n, int[][] list, List<Integer> max) {
-            int total = 0;
-            for (int j = 0; j < n; j++) {
-                total += list[j][j];
-            }
-            max.add(total);
-        }
-    }
+}
