@@ -1,33 +1,41 @@
 package org.example;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 public class Main {
     public static void main(String[] args) {
-        String[] IntList = {"0","1","2","3","4","5","6","7","8","9"};
-        String[] StringList = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
         Scanner sc = new Scanner(System.in);
 
-        String s = sc.next();
+        int N = sc.nextInt();
+        int[] firstArr = new int[N];
+        initArr(sc, N, firstArr);
+
+        int M = sc.nextInt();
+        int[] secArr = new int[M];
+        initArr(sc, M, secArr);
+
+        int[] total = new int[M + N];
+        for (int j = 0; j < N; j++) {
+            total[j] = firstArr[j];
+        }
+        for (int k = 0; k < M; k++) {
+            total[k + N] = secArr[k];
+        }
+
+        Arrays.sort(total);
+        for (int i : total) {
+            System.out.print(i + " ");
+        }
+
 
     }
 
-    public class Solution {
-        String[] IntList = {"0","1","2","3","4","5","6","7","8","9"};
-        String[] StringList = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-
-        public int solution(String s) {
-            int answer =  0;
-            for (String s1 : StringList) {
-                int index = Arrays.asList(StringList).indexOf(s1);
-                if (s.contains(s1)) {
-                    s = s.replace(s1, IntList[index]);
-                }
-            }
-            answer = Integer.parseInt(s);
-            return answer;
-
+    private static void initArr(Scanner sc, int M, int[] secArr) {
+        for (int j = 0; j < M; j++) {
+            secArr[j] = sc.nextInt();
         }
     }
 }
+
