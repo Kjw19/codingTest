@@ -8,36 +8,25 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         int N = sc.nextInt();
-        int[] firstArr = new int[N];
-        initArr(sc, N, firstArr);
+        int K = sc.nextInt();
+        int max=0;
 
+        List<Integer> price = new ArrayList<>();
 
-        int M = sc.nextInt();
-        int[] secArr = new int[M];
-        initArr(sc, M, secArr);
-
-        Arrays.sort(firstArr);
-        Arrays.sort(secArr);
-
-        int i = 0, j = 0;
-        while (i < N && j < M) {
-            if (firstArr[i] < secArr[j]) {
-                i++;
-            } else if (firstArr[i] > secArr[j]) {
-                j++;
-            } else {
-                System.out.print(firstArr[i] + " ");
-                i++;
-                j++;
-            }
+        for (int i = 0; i < N; i++) {
+            price.add(sc.nextInt());
+        }
+        for (int h = 0; h < K; h++) {
+            max += price.get(h);
         }
 
-        }
 
-    private static void initArr(Scanner sc, int M, int[] secArr) {
-        for (int j = 0; j < M; j++) {
-            secArr[j] = sc.nextInt();
+        int element = max;
+        for (int j = K; j < N; j++) {
+            element += price.get(j) - price.get(j - K);
+            max = Math.max(max, element);
         }
+        System.out.println(max);
     }
 }
 
